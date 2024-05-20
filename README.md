@@ -14,19 +14,19 @@ firstly we listed the directories in the label file directory and creating two d
 starting to loop on list of directory files of json to read each file and extract the information to put it in the dataframes and set the poor quality records type as poor quality and its time = 0 
 # Preprocessing
 ### Removing outliers
-we noticed that the data events' time varies some may be a second other can range from six to seven seconds so we plotted the boxplot of every disease to determain the outliers. we noticed that the outliers nearly starts from 3.7 seconds so we removed events above 3.7 seconds.
+The data events' time varies some may be a second other can range from six to seven seconds so we plotted the boxplot of every disease to determain the outliers. we noticed that the outliers nearly starts from 3.7 seconds so we removed events above 3.7 seconds.
 ### Label encoding
 then we started label encoding for normal class in events and records would be "0" and all diseases would be encoded as "1" while poor quality encoded as "2" saving the new dataframe into a csv file.
 ### Drop poor Quality
-the poor quality would have been a problem if we countinued to deal with it in our dataset as the events are empty even specialists couldn't classify those poor quality files so we dropped it.
-we reseted the index of the dataframe and randomized it.
+The poor quality would have been a problem if we countinued to deal with it in our dataset as the events are empty even specialists couldn't classify those poor quality files so we dropped it.
+The index was reseted of the dataframe and randomized it.
 we decided on dealing with events instead of records as the data of events is much larger than that of records as each record have three events. 
 ### Data filteration
-we applied a bandpass filter to pass a certain frequancy by making two functions the first is to make the bandpass filter with given lowcut, highcut and the other function apply the first function to our data.
+A bandpass filter was applied to pass a certain frequancy by making two functions the first is to make the bandpass filter with given lowcut, highcut and the other function apply the first function to our data.
 ### Records splitting
-we started to spilt the records into events each record into three events as mentioned before according to the start and the end of each event that information is in the json files. we merged the step of the filteration with the splitting step so the event resulted is filtered. 
+the records were spiltted into events each record into three events as mentioned before according to the start and the end of each event that information is in the json files. we merged the step of the filteration with the splitting step so the event resulted is filtered. 
 ### Data balancing
- the difference between class "0", class "1" were determined and deleted from class "0" as it exceeds the other class to balance the data in each class. then plotted it as a pie chart to make sure the data is balanced.
+The difference between class "0", class "1" were determined and deleted from class "0" as it exceeds the other class to balance the data in each class. then plotted it as a pie chart to make sure the data is balanced.
 <img src="https://github.com/SalmaSameh02/Signal-Processing/blob/e7d0cc5f1a9d1971af96b8659d406cb1c05b8d11/chart%20for%20data%20after%20balancing.png"><Br>
 A class called "MyDataset" had been created that takes the list of audio files paths and class label and transform with default assginment "None" the class generates a spectogram for each (".wav") file and resize it to the input size of model the class returns the spectogram of the event and its label.
 ### Train_Validation_Test splitting
